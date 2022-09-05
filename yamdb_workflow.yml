@@ -43,7 +43,7 @@ jobs:
         with:
           push: true
           file: ./api_yamdb/Dockerfile
-          context: .
+          context: ./api_yamdb/
           tags: feel2code/yamdb-final:latest
   deploy:
     runs-on: ubuntu-latest
