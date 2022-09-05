@@ -56,5 +56,4 @@
   `$ docker-compose exec web python manage.py loaddata fixtures.json`
 
 ### Основной функционал API
-
 [Документация проекта http://localhost:8000/redoc/](http://localhost:8000/redoc/)
