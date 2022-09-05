@@ -7,27 +7,23 @@ from django_filters.rest_framework import DjangoFilterBackend
 from rest_framework import status
 from rest_framework.decorators import action, api_view
 from rest_framework.filters import SearchFilter
-from rest_framework.mixins import (
-    CreateModelMixin, DestroyModelMixin, ListModelMixin
-)
+from rest_framework.mixins import (CreateModelMixin, DestroyModelMixin,
+                                   ListModelMixin)
 from rest_framework.pagination import PageNumberPagination
 from rest_framework.permissions import IsAuthenticated
 from rest_framework.response import Response
 from rest_framework.viewsets import GenericViewSet, ModelViewSet
 from rest_framework_simplejwt import tokens
+
 from reviews.filters import TitleFilter
 from reviews.models import Categories, Genres, Review, Title
 from users.models import User
 
-from .permissions import (
-    IsAdmin, IsAdminOrReadOnly, IsAuthorOrAdmin,
-    IsAuthorOrAdminOrModeratorOrReadOnly
-)
-from .serializers import (
-    CategorySerializer, CommentSerializer, Confirmation,
-    GenreSerializer, Registration, ReviewSerializer,
-    TitleSerializer, TitleViewSerializer, UserSerializer
-)
+from .permissions import (IsAdmin, IsAdminOrReadOnly, IsAuthorOrAdmin,
+                          IsAuthorOrAdminOrModeratorOrReadOnly)
+from .serializers import (CategorySerializer, CommentSerializer, Confirmation,
+                          GenreSerializer, Registration, ReviewSerializer,
+                          TitleSerializer, TitleViewSerializer, UserSerializer)
 
 
 class CreateListDestroyViewSet(
