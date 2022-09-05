@@ -17,6 +17,7 @@ from rest_framework_simplejwt import tokens
 from reviews.filters import TitleFilter
 from reviews.models import Categories, Genres, Review, Title
 from users.models import User
+
 from .permissions import (IsAdmin, IsAdminOrReadOnly, IsAuthorOrAdmin,
                           IsAuthorOrAdminOrModeratorOrReadOnly)
 from .serializers import (CategorySerializer, CommentSerializer, Confirmation,
@@ -212,10 +213,10 @@ class CommentViewSet(ModelViewSet):
                 id=self.kwargs.get('review_id'),
                 title_id=self.kwargs.get('title_id')
             )
+            queryset = review.comments.all()
+            return queryset
         except TypeError:
             TypeError('Нет ревью на это произведение')
-        queryset = review.comments.all()
-        return queryset
 
     def perform_create(self, serializer):
         try:
