@@ -14,9 +14,9 @@ from rest_framework.permissions import IsAuthenticated
 from rest_framework.response import Response
 from rest_framework.viewsets import GenericViewSet, ModelViewSet
 from rest_framework_simplejwt import tokens
-from reviews.filters import TitleFilter
-from reviews.models import Categories, Genres, Review, Title
-from users.models import User
+from ..reviews.filters import TitleFilter
+from ..reviews.models import Categories, Genres, Review, Title
+from ..users.models import User
 
 from .permissions import (IsAdmin, IsAdminOrReadOnly, IsAuthorOrAdmin,
                           IsAuthorOrAdminOrModeratorOrReadOnly)
@@ -213,8 +213,7 @@ class CommentViewSet(ModelViewSet):
                 id=self.kwargs.get('review_id'),
                 title_id=self.kwargs.get('title_id')
             )
-            queryset = review.comments.all()
-            return queryset
+            return review.comments.all()
         except TypeError:
             TypeError('Нет ревью на это произведение')
 
@@ -225,6 +224,6 @@ class CommentViewSet(ModelViewSet):
                 id=self.kwargs.get('review_id'),
                 title_id=self.kwargs.get('title_id')
             )
+            serializer.save(author=self.request.user, review=review)
         except TypeError:
             TypeError('Нет отзыва у этого произведения')
-        serializer.save(author=self.request.user, review=review)
