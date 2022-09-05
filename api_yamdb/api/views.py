@@ -14,11 +14,9 @@ from rest_framework.permissions import IsAuthenticated
 from rest_framework.response import Response
 from rest_framework.viewsets import GenericViewSet, ModelViewSet
 from rest_framework_simplejwt import tokens
-
 from reviews.filters import TitleFilter
 from reviews.models import Categories, Genres, Review, Title
 from users.models import User
-
 from .permissions import (IsAdmin, IsAdminOrReadOnly, IsAuthorOrAdmin,
                           IsAuthorOrAdminOrModeratorOrReadOnly)
 from .serializers import (CategorySerializer, CommentSerializer, Confirmation,
