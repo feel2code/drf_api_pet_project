@@ -57,3 +57,43 @@
 
 ### Основной функционал API
 [Документация проекта http://localhost:8000/redoc/](http://localhost:8000/redoc/)
+
+Примеры запросов:
+
+- Регистрация 
+`POST`
+> /auth/signup/
+
+`Content type: application/json`
+> {\
+> "email": "string",\
+> "username": "string"\
+> }
+
+- Получение JWT-токена
+`POST`
+> /auth/token/
+
+`Content type: application/json`
+> { \
+> "username": "string",\
+> "confirmation_code": "string"\
+> }
+
+- Получение списка всех категорий произведений
+`GET`
+> /categories/
+
+Пример ответа: \
+`Content type: application/json`
+> { \
+> "count": 0,\
+> "next": "string",\
+> "previous": "string",\
+> "results": [{\
+> "name": "string",\
+> "slug": "string"\
+> }]\
+> }
+
+Полные примеры запросов и ответов содержатся в [документации проекта](http://localhost:8000/redoc/).
