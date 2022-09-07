@@ -37,8 +37,12 @@
   >DB_PORT= # порт (по умолчанию 5432)
 - Соберите образ
   `$ cd infra && docker-compose up -d --build`
+- Примените миграции
+  `$ docker-compose exec web python manage.py migrate`
 - Создайте админа
   `$ docker-compose exec web python manage.py createsuperuser`
+- Соберите статику
+  `$ docker-compose exec web python manage.py collectstatic --no-input`
 
 ### Остановка проекта
 - В терминале выполните команду:
